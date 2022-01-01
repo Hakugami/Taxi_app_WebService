@@ -75,7 +75,7 @@ public class Main {
 	                                    customer1.requestRide(source, dest);
                             		}
                             		case 2 -> {
-                            			customer1.chooseOffer();
+//                            			customer1.chooseOffer();
                                 }
                                     case 3 ->{
                                         System.out.println("Rate your latest driver");

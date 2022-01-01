@@ -36,6 +36,8 @@ public class Admin extends Person {
     public static void getDriversRequests(Driver driver){
         allRequests.add(driver);
     }
+
+
     public boolean reviewRequests(){
         Scanner scanner=new Scanner(System.in);
         System.out.println("all the current requests : \n"+allRequests.toString());
@@ -103,4 +105,55 @@ public class Admin extends Person {
         }
 
     }
+
+    public String displayRequests(){
+        ArrayList<Driver> temp=allRequests;
+        if(allRequests != null){
+            return temp.toString();
+        }
+        else{
+            return "There are no requests currently";
+        }
+    }
+    public boolean acceptRequest(String id){
+        for(int i=0;i<allRequests.size();i++){
+            if(Objects.equals(allRequests.get(i).getId(), id)){
+                Database.addDriver(allRequests.get(i));
+                allRequests.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean denyRequest(String id){
+        for(int i=0;i<allRequests.size();i++){
+            if(Objects.equals(allRequests.get(i).getId(), id)){
+                allRequests.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean suspendDriver(String id){
+        for (Driver driver : Database.getAllDrivers()) {
+            if (Objects.equals(driver.getId(), id)) {
+                driver.setActive(false);
+                System.out.println(driver.getUserName() + " has been suspended");
+                return true;
+            }
+        }
+
+        return false;
+    }
+    public boolean suspendCustomer(String userName) {
+        for (Customer customer : Database.getAllUsers()) {
+            if (Objects.equals(customer.getUserName(), userName)) {
+                customer.setActive(false);
+                System.out.println(customer.getUserName() + " has been suspended");
+                return true;
+            }
+        }
+            return false;
+    }
+
 }
