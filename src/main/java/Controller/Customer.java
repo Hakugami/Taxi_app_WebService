@@ -13,27 +13,31 @@ public class Customer extends User {
 		myRide=r;// added this to see his ride
 
     }
-    
-    public void chooseOffer(){
-			Scanner input=new Scanner(System.in);
-			if(myRide==null)
-			{
-				System.out.println("there are no offers yet");
-				return;
-			}
 
-			if(myRide.listOffers()) {
-				System.out.println("0-exit");
-				System.out.println("choose your desired offer");
-				int choice = input.nextInt();
-				if (choice == 0) {
-					return;
-				}
-				myRide.getOffer(choice);
-				myRide.log("Customer accepted offer",this);
-			}
-
-    }
+	public String displayOffers(){
+		return null;
+	}
+    // parameter to choose offer
+//    public void chooseOffer(){
+//			Scanner input=new Scanner(System.in);
+//			if(myRide==null)
+//			{
+//				System.out.println("there are no offers yet");
+//				return;
+//			}
+//
+//			if(myRide.listOffers()) {
+//				System.out.println("0-exit");
+//				System.out.println("choose your desired offer");
+//				int choice = input.nextInt();
+//				if (choice == 0) {
+//					return;
+//				}
+//				myRide.getOffer(choice);
+//				myRide.log("Customer accepted offer",this);
+//			}
+//
+//    }
     public void addRate(double rate){
 			Rate customerRate= null;
 			if (myRide.getSelectedOffer() != null) {
