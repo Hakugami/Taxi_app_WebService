@@ -1,6 +1,7 @@
 package Controller;
 
 import java.util.ArrayList;
+import java.util.Vector;
 
 
 public class Driver extends User implements driverAndRideObserver{
@@ -19,21 +20,22 @@ public class Driver extends User implements driverAndRideObserver{
 		this.driverRide = driverRide;
 	}
 
-
-
-	public Ride chooseRide(){
+	Vector<Ride>driverRides = null;
+	public Vector<Ride> displayDriverRides(){
 		//filter area depending on fav area and offer an offer and register it in the database
 		for (String area : favouriteArea) {
 			for(Ride ride : Database.getAllRides()) {
 				if(ride.getSource().equals(area)){
-					driverRide=ride;
-					return driverRide;
+					driverRides.add(ride);
 				}
 			}
 		}
-		return driverRide;
+		return driverRides;
+	}//print Rides
+	public void chooseRide( int numOfRide, double price){
+		setOffer(driverRides.get(numOfRide-1),price);
+	}//assign offer to Ride.
 
-	}
 	public void setOffer(Ride ride,double price) {
 		Offer offer = new Offer(this, price);
 		ride.getOffers().add(offer);

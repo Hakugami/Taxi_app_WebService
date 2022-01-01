@@ -75,7 +75,7 @@ public class Main {
 	                                    customer1.requestRide(source, dest);
                             		}
                             		case 2 -> {
-//                            			customer1.chooseOffer();
+                            			//customer1.chooseOffer();
                                 }
                                     case 3 ->{
                                         System.out.println("Rate your latest driver");
@@ -110,10 +110,10 @@ public class Main {
                                 switch(choiceD) {
                             		case 1 -> {
                             			if (driver1.listRidesWithSourceArea()) {
-                            				driver1.chooseRide();
+                            				driver1.displayDriverRides();
                             				System.out.println("Set the offer");
                             				double price=scannerDoub.nextDouble();
-                            				driver1.setOffer(driver1.chooseRide(),price);
+                            				//driver1.setOffer(driver1.chooseRide(),price);
                             			}
                             			else
                             				System.out.println("There is no requests in your fav areas");
