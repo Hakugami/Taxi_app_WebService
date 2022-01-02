@@ -32,5 +32,15 @@ public class AdminURLS {
         return admin.showLogs();
     }
 
+    @PostMapping("admin/setDiscounts/{area}/{value}")
+    public void addDiscount(@PathVariable String area,@PathVariable double value){
+        admin.setDiscounts(area,value);
+    }
+
+    @PostMapping("admin/setDiscounts/{holiday}")
+    public void addHoliday(@PathVariable String holiday){
+        admin.setHolidays(holiday);
+    }
+
 
 }

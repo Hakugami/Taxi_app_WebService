@@ -4,7 +4,6 @@ import View.Database;
 import View.Offer;
 import View.Rate;
 
-import javax.xml.crypto.Data;
 import java.util.Vector;
 
 public class Customer extends User {
@@ -12,7 +11,7 @@ public class Customer extends User {
 	protected Ride myRide;
 	protected boolean firstRide=true;
 
-	public void discount(){
+	public void checkDiscount(){
 		boolean flag=false;
 		for(String string: Database.getPublicHoliday()){
 			flag=string.equals(Database.getDate());
@@ -66,7 +65,7 @@ public class Customer extends User {
 				return false;
 			}
 			myRide.setSelectedOffer(customOffers.get(choice));
-			discount();
+			checkDiscount();
 			firstRide=false;
 			myRide.log("Customer accepted offer",this);
 		}

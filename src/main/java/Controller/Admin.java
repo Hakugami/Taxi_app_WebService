@@ -30,17 +30,8 @@ public class Admin extends Person {
         return stringBuilder.toString();
     }
 
-    public  boolean setDiscounts(String area,Double value){
-        for(String area1: Database.areaDiscounts.keySet()){
-            if (area.equals(area1)){
-                return false;
-            }
-            else{
-                Database.areaDiscounts.put(area,value);
-                return true;
-            }
-        }
-        return false;
+    public void setDiscounts(String area,Double value){
+        Database.areaDiscounts.put(area,value);
     }
 
     public void setHolidays(String holidays){
