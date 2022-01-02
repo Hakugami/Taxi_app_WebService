@@ -135,11 +135,13 @@ public class Driver extends User implements driverAndRideObserver{
 		favouriteArea.add(favArea);
 		
 	}
-	public void getFavouriteArea() {
+
+	public String getFavouriteArea() {
+		String Result="";
 		for (String favArea: favouriteArea) {
-			System.out.println(favArea);
+			Result+=favArea+"\n";
 		}
-		
+		return  Result;
 	}
 	public void setAllRating(String username,double rate) {
 		Rate r=new Rate(username,rate);

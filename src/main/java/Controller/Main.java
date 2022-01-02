@@ -5,7 +5,8 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        while (true) {
+
+         while (true) {
             System.out.println("\nWelcome to our taxi app\n---------------------------\n");
             Driver driver = new Driver();
             Customer customer = new Customer();
@@ -141,7 +142,7 @@ public class Main {
                             			driver1.setFavouriteArea(area);
                             		}
                             		case 5 -> {
-                            			driver1.getFavouriteArea();
+                                        System.out.println(driver1.getFavouriteArea());
                             		}
 
 
