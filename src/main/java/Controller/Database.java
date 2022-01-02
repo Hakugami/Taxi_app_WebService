@@ -129,6 +129,15 @@ public class  Database  {
         return null;
     }
 
+    public static Driver getDriver(User user){
+        int index=allDrivers.indexOf((Driver) user);
+        return allDrivers.get(index);
+    }
+    public static Customer getCustomer(User user){
+        int index=allUsers.indexOf((Customer) user);
+        return allUsers.get(index);
+    }
+
 
 
 

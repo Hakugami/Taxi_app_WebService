@@ -10,6 +10,14 @@ public class customerUrls {
     public boolean register(@RequestBody Customer customer){
         return authenticationManager.register(customer);
     }
+    @PostMapping(value="/user/login",consumes = "application/json",produces = "application/json")
+    public boolean login(@RequestBody Credentials credentials){
+        return authenticationManager.loginCustomer(credentials);
+    }
+    @GetMapping("user/logout")
+    public String logout(){
+        return authenticationManager.logout();
+    }
 
     @PostMapping("user/{username}/requestRide/{source}/{dest}")
     public void requestRide(@PathVariable("username") String username,@PathVariable("source") String source,@PathVariable("dest") String dest)

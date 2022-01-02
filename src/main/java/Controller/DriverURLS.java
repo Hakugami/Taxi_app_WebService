@@ -15,7 +15,13 @@ public class DriverURLS {
         return authenticationManager.register(driver);
     }
     @PostMapping(value="/driver/login",consumes = "application/json",produces = "application/json")
-    
+    public boolean login(@RequestBody Credentials credentials){
+        return authenticationManager.loginDriver(credentials);
+    }
+    @GetMapping("driver/logout")
+    public String logout(){
+        return authenticationManager.logout();
+    }
 
 
     @GetMapping("/driver/{username}/availableRides")

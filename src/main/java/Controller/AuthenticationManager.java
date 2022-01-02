@@ -1,8 +1,11 @@
 package Controller;
 import Controller.*;
+
+import javax.xml.crypto.Data;
+
 public class AuthenticationManager {
-    static AuthenticationManager authenticationManager=new AuthenticationManager();
-    User currentAcc;
+    private static final AuthenticationManager authenticationManager=new AuthenticationManager();
+    private User currentAcc;
 
     private AuthenticationManager(){}
 
@@ -33,6 +36,12 @@ public class AuthenticationManager {
         return Database.verifyDriver(credentials.getUserName(),credentials.getPassword());
     }
     public String logout(){
+        if(currentAcc instanceof Customer){
+            Database.getCustomer(currentAcc).setOnline(false);
+        }
+        else if(currentAcc instanceof  Driver){
+            Database.getDriver(currentAcc).setOnline(false);
+        }
         currentAcc=null;
         return "done";
     }
