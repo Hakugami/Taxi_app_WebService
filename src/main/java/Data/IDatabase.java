@@ -1,4 +1,7 @@
-package Controller;
+package Data;
+
+import Actors.Customer;
+import Actors.Driver;
 
 public interface IDatabase {
     boolean verify(String user, String pass);

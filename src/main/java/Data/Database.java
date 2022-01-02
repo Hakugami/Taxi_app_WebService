@@ -1,4 +1,6 @@
-package Controller;
+package Data;
+
+import Actors.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;

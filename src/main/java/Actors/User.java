@@ -1,4 +1,9 @@
-package Controller;
+package Actors;
+
+import Actors.Customer;
+import Actors.Driver;
+import Actors.Person;
+import Data.Database;
 
 public abstract class User extends Person {
     protected boolean online=false;

@@ -1,10 +1,12 @@
-package Controller;
+package Actors;
+
+import Data.*;
 
 import java.util.ArrayList;
 import java.util.Vector;
 
 
-public class Driver extends User implements driverAndRideObserver{
+public class Driver extends User implements driverAndRideObserver {
 	protected String id;
 	protected String licence;
 	protected double rate;

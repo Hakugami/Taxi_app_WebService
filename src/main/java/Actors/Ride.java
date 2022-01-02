@@ -1,4 +1,12 @@
-package Controller;
+package Actors;
+
+import Actors.Customer;
+import Actors.Driver;
+import Actors.Person;
+import Data.Database;
+import Data.Offer;
+import Data.driverAndRideObserver;
+import Data.rideSub;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -6,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Vector;
 
-public class Ride implements rideSub{
+public class Ride implements rideSub {
 	private String source;
 	private String destination;
 	private Customer customer;
@@ -15,7 +23,7 @@ public class Ride implements rideSub{
 	private double discount;
 	private int numOfPeople;
 
-	public void log(String event,Person actor){
+	public void log(String event, Person actor){
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 		LocalDateTime now = LocalDateTime.now();
 		StringBuilder stringBuilder=new StringBuilder();
@@ -23,12 +31,11 @@ public class Ride implements rideSub{
 			stringBuilder.append(dtf.format(now)).append("--->"+event+": ").append(actor.getUserName());
 			Database.saveLogs(stringBuilder.toString());
 		}
-		else{
-			stringBuilder.append(dtf.format(now)).append("--->"+event+": ").append(customer.getUserName());
+		else {
+			stringBuilder.append(dtf.format(now)).append("--->" + event + ": ").append(customer.getUserName());
 			Database.saveLogs(stringBuilder.toString());
 			log("Driver has reached the user location");
 		}
-
 	}
 	public void log(String event){
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");

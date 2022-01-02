@@ -1,5 +1,9 @@
 package Controller;
-import Controller.*;
+import Actors.Customer;
+import Actors.Driver;
+import Data.Database;
+import Actors.User;
+
 
 import javax.xml.crypto.Data;
 
@@ -28,7 +32,7 @@ public class AuthenticationManager {
     }
 
     public boolean loginCustomer(Credentials credentials){
-        currentAcc=Database.getUserByUsername(credentials.getUserName());
+        currentAcc= Database.getUserByUsername(credentials.getUserName());
         return Database.verify(credentials.getUserName(),credentials.getPassword());
     }
     public boolean loginDriver(Credentials credentials){

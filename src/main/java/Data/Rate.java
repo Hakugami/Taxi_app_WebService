@@ -1,4 +1,4 @@
-package Controller;
+package Data;
 
 public class Rate {
 	private String username;

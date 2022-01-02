@@ -1,5 +1,7 @@
-package Controller;
+package Actors;
 
+
+import Data.Database;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -28,7 +30,7 @@ public class Admin extends Person {
     }
 
     public  boolean setDiscounts(String area,Double value){
-        for(String area1:Database.areaDiscounts.keySet()){
+        for(String area1: Database.areaDiscounts.keySet()){
             if (area.equals(area1)){
                 return false;
             }
