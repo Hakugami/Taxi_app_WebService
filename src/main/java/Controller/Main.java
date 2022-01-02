@@ -131,9 +131,9 @@ public class Main {
                             			}
                             		}
                             		case 3 -> {
-                            			driver1.getAllRating();
+                                        System.out.println(driver1.getAllRating());
                             			System.out.println(" ");
-                            			driver1.getAverageRating();
+                                        System.out.println(driver1.getAverageRating());
                             		}
                             		case 4 -> {
                             			System.out.println("Enter the area you want to add");

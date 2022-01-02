@@ -145,16 +145,20 @@ public class Driver extends User implements driverAndRideObserver{
 		Rate r=new Rate(username,rate);
 		allRating.add(r);
 	}
-	public void getAllRating() {
+	public String getAllRating() {
+		String allRateing="";
 		for(Rate allRate : allRating)
-			System.out.println(allRate.getUsername()+"   "+allRate.getRate());
+		{
+			allRateing +=allRate.getUsername()+"   "+allRate.getRate();
+		}
+		return allRateing;
 	}
-	public void getAverageRating() {
+	public String getAverageRating() {
 		double r=0;
 		for(Rate allRate : allRating){
 			r+=allRate.getRate();
 		}
-		System.out.println(r/allRating.size());
+		return String.valueOf(r/allRating.size());
 	}
 	@Override
 	public String toString() {
