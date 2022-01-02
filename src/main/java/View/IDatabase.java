@@ -1,7 +1,7 @@
-package Data;
+package View;
 
-import Actors.Customer;
-import Actors.Driver;
+import Controller.Customer;
+import Controller.Driver;
 
 public interface IDatabase {
     boolean verify(String user, String pass);

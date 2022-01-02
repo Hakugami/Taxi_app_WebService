@@ -1,12 +1,9 @@
-package Actors;
+package Controller;
 
-import Actors.Customer;
-import Actors.Driver;
-import Actors.Person;
-import Data.Database;
-import Data.Offer;
-import Data.driverAndRideObserver;
-import Data.rideSub;
+import View.Database;
+import View.Offer;
+import View.driverAndRideObserver;
+import View.rideSub;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

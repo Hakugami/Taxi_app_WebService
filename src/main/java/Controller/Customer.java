@@ -1,8 +1,8 @@
-package Actors;
+package Controller;
 
-import Data.Database;
-import Data.Offer;
-import Data.Rate;
+import View.Database;
+import View.Offer;
+import View.Rate;
 
 import java.util.Vector;
 

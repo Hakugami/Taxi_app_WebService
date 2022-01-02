@@ -1,8 +1,9 @@
-package Controller;
+package API;
 
-import Actors.Driver;
-import Actors.Ride;
-import Data.Database;
+import Controller.Driver;
+import Controller.Ride;
+import Model.AuthenticationManager;
+import View.Database;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Vector;

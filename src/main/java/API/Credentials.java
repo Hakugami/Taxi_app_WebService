@@ -1,4 +1,4 @@
-package Controller;
+package API;
 
 public class Credentials {
     private String userName;

@@ -1,16 +1,15 @@
-package Controller;
-import Actors.Customer;
-import Actors.Driver;
-import Data.Database;
-import Actors.User;
-
-
-import javax.xml.crypto.Data;
+package Model;
+import API.Credentials;
+import Controller.Customer;
+import Controller.Driver;
+import View.Database;
+import Controller.User;
+import View.IDatabase;
 
 public class AuthenticationManager {
     private static final AuthenticationManager authenticationManager=new AuthenticationManager();
     private User currentAcc;
-
+    IDatabase database = Database.getInstance();
     private AuthenticationManager(){}
 
     public static AuthenticationManager getAuthenticationManager() {
@@ -33,11 +32,11 @@ public class AuthenticationManager {
 
     public boolean loginCustomer(Credentials credentials){
         currentAcc= Database.getUserByUsername(credentials.getUserName());
-        return Database.verify(credentials.getUserName(),credentials.getPassword());
+        return database.verify(credentials.getUserName(),credentials.getPassword());
     }
     public boolean loginDriver(Credentials credentials){
         currentAcc=Database.getDriverByUsername(credentials.getUserName());
-        return Database.verifyDriver(credentials.getUserName(),credentials.getPassword());
+        return database.verifyDriver(credentials.getUserName(),credentials.getPassword());
     }
     public String logout(){
         if(currentAcc instanceof Customer){

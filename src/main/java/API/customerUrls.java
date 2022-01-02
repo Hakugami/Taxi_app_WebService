@@ -1,7 +1,8 @@
-package Controller;
+package API;
 
-import Actors.Customer;
-import Data.Database;
+import Controller.Customer;
+import Model.AuthenticationManager;
+import View.Database;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

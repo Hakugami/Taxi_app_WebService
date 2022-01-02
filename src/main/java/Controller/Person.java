@@ -1,4 +1,4 @@
-package Actors;
+package Controller;
 
 public class Person {
     protected String userName;

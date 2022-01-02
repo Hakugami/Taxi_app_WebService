@@ -1,6 +1,6 @@
-package Actors;
+package Controller;
 
-import Data.*;
+import View.*;
 
 import java.util.ArrayList;
 import java.util.Vector;

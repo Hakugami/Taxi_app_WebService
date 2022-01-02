@@ -1,7 +1,8 @@
-package Actors;
+package Controller;
 
 
-import Data.Database;
+import View.Database;
+import View.IDatabase;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -10,7 +11,7 @@ import java.util.Scanner;
 public class Admin extends Person {
     public static ArrayList<Driver> allRequests=new ArrayList<>();
     private static final ArrayList<String> logs=new ArrayList<>();
-
+    IDatabase database = Database.getInstance();
     private static Admin admin= new Admin();
     private Admin(){}
 
@@ -61,7 +62,7 @@ public class Admin extends Person {
                 int choice=scanner.nextInt();
                 switch (choice) {
                     case 1 -> {
-                        Database.addDriver(allRequests.get(i));
+                        database.addDriver(allRequests.get(i));
                         allRequests.remove(i);
                         return true;
                     }
@@ -130,7 +131,7 @@ public class Admin extends Person {
     public boolean acceptRequest(String id){
         for(int i=0;i<allRequests.size();i++){
             if(Objects.equals(allRequests.get(i).getId(), id)){
-                Database.addDriver(allRequests.get(i));
+                database.addDriver(allRequests.get(i));
                 allRequests.remove(i);
                 return true;
             }

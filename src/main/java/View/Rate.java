@@ -1,4 +1,4 @@
-package Data;
+package View;
 
 public class Rate {
 	private String username;

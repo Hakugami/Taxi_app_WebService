@@ -1,4 +1,4 @@
-package Data;
+package View;
 
 public interface rideSub {
     public void subscribe(driverAndRideObserver ob);

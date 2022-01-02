@@ -1,6 +1,6 @@
-package Data;
+package View;
 
-import Actors.Driver;
+import Controller.Driver;
 
 public class Offer {
     private Driver driver;

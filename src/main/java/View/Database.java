@@ -1,12 +1,12 @@
-package Data;
-
-import Actors.*;
+package View;
+import Model.*;
+import Controller.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class  Database  {
+public class  Database implements IDatabase {
 
     private static final ArrayList<Customer> allUsers=new ArrayList<>();
     private static final ArrayList<Driver> allDrivers= new ArrayList<>();
@@ -37,7 +37,7 @@ public class  Database  {
         return null;
     }
 
-    public static boolean verify(String user, String pass){
+    public boolean verify(String user, String pass){
         for (User user1:allUsers) {
             if(user1.getUserName().equals(user)&&user1.getPassword().equals(pass)){
                 user1.setOnline(true);
@@ -48,7 +48,7 @@ public class  Database  {
         return false;
     }
 
-    public static boolean verifyDriver(String user,String pass){
+    public boolean verifyDriver(String user,String pass){
         for(Driver driver:allDrivers){
             if(driver.getUserName().equals(user) && driver.getPassword().equals(pass)){
                 driver.setOnline(true);
@@ -61,7 +61,7 @@ public class  Database  {
 
 
 
-    public static boolean addUser(Customer user){
+    public boolean addUser(Customer user){
         if(allUsers.contains(user)){
             System.out.println("This user already exists");
             return false;
@@ -74,7 +74,7 @@ public class  Database  {
     }
 
 
-    public static Customer getUser(String user,String pass){
+    public Customer getUser(String user,String pass){
         for (Customer user1:allUsers){
             if(user1.getUserName().equals(user)||user1.getPassword().equals(pass)){
                 return user1;
@@ -95,12 +95,12 @@ public class  Database  {
     public static void getUserBySource(String source) {
     	for (Ride ride:allRides){
             if(ride.getSource().equals(source)){
-            	System.out.println("Customer: "+ride.getCustomer().userName+"    "+ride.getCustomer().Email);
+            	System.out.println("Customer: "+ ride.getCustomer().getUserName() +"    "+ ride.getCustomer().getEmail());
             }
     	}
      }
 
-    public static boolean addDriver(Driver driver){
+    public boolean addDriver(Driver driver){
         if(allDrivers.contains(driver)){
             System.out.println("This driver already exists");
             return false;
@@ -113,7 +113,7 @@ public class  Database  {
     }
 
 
-    public static Driver getDriver(String user,String pass){
+    public Driver getDriver(String user,String pass){
         for (Driver driver:allDrivers){
             if(driver.getUserName().equals(user)&&driver.getPassword().equals(pass)){
                 return driver;
