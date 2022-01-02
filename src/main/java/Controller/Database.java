@@ -79,6 +79,16 @@ public class  Database  {
         }
         return null;
     }
+
+    public static Customer getUserByUsername(String user){
+        for (Customer user1:allUsers){
+            if(user1.getUserName().equals(user) && user1.isOnline()){
+                return user1;
+            }
+        }
+        return null;
+    }
+
     public static void getUserBySource(String source) {
     	for (Ride ride:allRides){
             if(ride.getSource().equals(source)){
@@ -103,6 +113,15 @@ public class  Database  {
     public static Driver getDriver(String user,String pass){
         for (Driver driver:allDrivers){
             if(driver.getUserName().equals(user)&&driver.getPassword().equals(pass)){
+                return driver;
+            }
+        }
+        return null;
+    }
+
+    public static Driver getDriverByUsername(String user){
+        for (Driver driver:allDrivers){
+            if(driver.getUserName().equals(user) && driver.isOnline()){
                 return driver;
             }
         }

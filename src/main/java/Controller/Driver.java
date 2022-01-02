@@ -15,7 +15,6 @@ public class Driver extends User implements driverAndRideObserver{
 	protected String currentLocation;
 	protected boolean isBusy=false;
 
-
 	public void setDriverRide(Ride driverRide) {
 		this.driverRide = driverRide;
 	}

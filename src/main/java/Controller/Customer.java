@@ -15,29 +15,31 @@ public class Customer extends User {
     }
 
 	public String displayOffers(){
-		return null;
+		String Offers="";
+
+		for (int i = 0; i < myRide.getOffers().size(); i++) {
+			Offers+=i+1+"-"+myRide.getOffers().get(i);
+		}
+		return Offers;
 	}
     // parameter to choose offer
-//    public void chooseOffer(){
-//			Scanner input=new Scanner(System.in);
-//			if(myRide==null)
-//			{
-//				System.out.println("there are no offers yet");
-//				return;
-//			}
-//
-//			if(myRide.listOffers()) {
-//				System.out.println("0-exit");
-//				System.out.println("choose your desired offer");
-//				int choice = input.nextInt();
-//				if (choice == 0) {
-//					return;
-//				}
-//				myRide.getOffer(choice);
-//				myRide.log("Customer accepted offer",this);
-//			}
-//
-//    }
+    public boolean chooseOffer(int choice){
+
+		if(myRide==null)
+		{
+			return false;
+		}
+
+		if(myRide.listOffers()) {
+
+			if (choice == 0) {
+				return false;
+			}
+			myRide.getOffer(choice);
+			myRide.log("Customer accepted offer",this);
+		}
+		return true;
+    }
     public void addRate(double rate){
 			Rate customerRate= null;
 			if (myRide.getSelectedOffer() != null) {

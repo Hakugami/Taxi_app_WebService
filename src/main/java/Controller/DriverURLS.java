@@ -7,21 +7,24 @@ import java.util.Vector;
 @RestController
 
 public class DriverURLS {
-    Driver driver=new Driver();
+    Driver driver1=new Driver();
 
-    @GetMapping("driver/availableRides")
-    public Vector<Ride> displayRequests(){
+    @GetMapping("/driver/{username}/availableRides")
+    public Vector<Ride> displayRequests(@PathVariable("username") String username ){
+        Driver driver = Database.getDriverByUsername(username);
         return driver.displayDriverRides();
     }
 
-    @PostMapping("driver/chooseRideToOffer/{numOfRide}/{price}")
-    public void chooseRide(@PathVariable("numOfRide") int numOfRide,@PathVariable("price") double price){
+    @PostMapping("driver/{username}/chooseRideToOffer/{numOfRide}/{price}")
+    public void chooseRide(@PathVariable("username") String username ,@PathVariable("numOfRide") int numOfRide,@PathVariable("price") double price){
+        Driver driver = Database.getDriverByUsername(username);
         driver.chooseRide(numOfRide,price);
         return;
     }
 
-    @GetMapping("driver/currentRide")
-    public String displayCurrntRide(){
+    @GetMapping("driver/{username}/currentRide")
+    public String displayCurrntRide(@PathVariable("username") String username){
+        Driver driver = Database.getDriverByUsername(username);
         String currentRide="";
         currentRide=driver.getDriverRide().getSource()+"-------->"+driver.getDriverRide().getDestination()+"\n";
         currentRide+=driver.getDriverRide().getCustomer().getUserName()+"\n";
@@ -29,23 +32,25 @@ public class DriverURLS {
         return currentRide;
     }
 
-    @GetMapping("driver/rating")
-    public String displayrating(){
+    @GetMapping("driver/{username}/rating")
+    public String displayrating(@PathVariable("username") String username){
+        Driver driver = Database.getDriverByUsername(username);
         String currentRate="";
         currentRate+= driver.getAllRating()+"\n";
         currentRate+=driver.getAverageRating();
         return currentRate;
     }
 
-    @PostMapping ("driver/setFavoriteArea/{area}")
-    public void setFavoriteArea(@PathVariable("area") String area)
+    @PostMapping ("driver/{username}/setFavoriteArea/{area}")
+    public void setFavoriteArea(@PathVariable("username") String username,@PathVariable("area") String area)
     {
+        Driver driver = Database.getDriverByUsername(username);
         driver.setFavouriteArea(area);
     }
 
-    @GetMapping("driver/getFavouriteArea")
-    public String getFavouriteArea(){
-
+    @GetMapping("driver/{username}/getFavouriteArea")
+    public String getFavouriteArea(@PathVariable("username") String username){
+        Driver driver = Database.getDriverByUsername(username);
         return driver.getFavouriteArea();
     }
 

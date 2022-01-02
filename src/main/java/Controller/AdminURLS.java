@@ -13,10 +13,7 @@ public class AdminURLS {
         return admin.displayRequests();
     }
     @PostMapping("admin/requests/accept/{id}")
-    public boolean acceptRequest(@PathVariable String id){
-        return admin.acceptRequest(id);
-    }
-
+    public boolean acceptRequest(@PathVariable String id){return admin.acceptRequest(id);}
     @PostMapping("admin/requests/deny/{id}")
     public boolean denyRequest(@PathVariable String id){
         return admin.denyRequest(id);

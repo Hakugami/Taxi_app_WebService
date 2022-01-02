@@ -59,13 +59,13 @@ public class Main {
                         if (type == 1) {
                             Customer customer1 = Database.getUser(Username, Password);
                             int choiceC=0;
-                            while(choiceC!=4){
+                            while(choiceC!=5){
                                 assert customer1 != null;
                                 if(!customer1.isActive()){
                                     System.out.println("You are currently suspended");
                                     break;
                                 }
-                            	System.out.println("1-Request a ride\n2-View current offers\n3-rate a driver\n4-Logout");
+                            	System.out.println("1-Request a ride\n2-View current offers\n 3- choose offer\n4-rate a driver\n 5-Logout");
                             	choiceC = scannerInt.nextInt();
                                 switch (choiceC) {
                             		case 1 -> {
@@ -76,9 +76,15 @@ public class Main {
 	                                    customer1.requestRide(source, dest);
                             		}
                             		case 2 -> {
-                            			//customer1.chooseOffer();
-                                }
-                                    case 3 ->{
+                                        System.out.println(customer1.displayOffers());
+                                    }
+                                    case 3->{
+                                        System.out.println("enter ride number:");
+                                        int ridenumber;
+                                        ridenumber = scannerInt.nextInt();
+                                        customer1.chooseOffer(ridenumber);
+                                    }
+                                    case 4 ->{
                                         System.out.println("Rate your latest driver");
                                         System.out.println("Enter rating");
                                         double rate= scannerDoub.nextDouble();
