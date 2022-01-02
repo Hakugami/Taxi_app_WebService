@@ -1,6 +1,15 @@
 package Controller;
 import Controller.*;
 public class AuthenticationManager {
+    static AuthenticationManager authenticationManager=new AuthenticationManager();
+    User currentAcc;
+
+    private AuthenticationManager(){}
+
+    public static AuthenticationManager getAuthenticationManager() {
+        return authenticationManager;
+    }
+
     public boolean register(User user){
         if(user instanceof Customer){
             ((Customer)user).register(((Customer)user).getUserName(),((Customer)user).getPassword()
@@ -14,4 +23,18 @@ public class AuthenticationManager {
         }
         return false;
     }
+
+    public boolean loginCustomer(Credentials credentials){
+        currentAcc=Database.getUserByUsername(credentials.getUserName());
+        return Database.verify(credentials.getUserName(),credentials.getPassword());
+    }
+    public boolean loginDriver(Credentials credentials){
+        currentAcc=Database.getDriverByUsername(credentials.getUserName());
+        return Database.verifyDriver(credentials.getUserName(),credentials.getPassword());
+    }
+    public String logout(){
+        currentAcc=null;
+        return "done";
+    }
+
 }

@@ -7,7 +7,16 @@ import java.util.Vector;
 @RestController
 
 public class DriverURLS {
-    Driver driver1=new Driver();
+
+    AuthenticationManager authenticationManager=AuthenticationManager.getAuthenticationManager();
+
+    @PostMapping(value="/driver/register",consumes = "application/json",produces = "application/json")
+    public boolean register(@RequestBody Driver driver){
+        return authenticationManager.register(driver);
+    }
+    @PostMapping(value="/driver/login",consumes = "application/json",produces = "application/json")
+    
+
 
     @GetMapping("/driver/{username}/availableRides")
     public Vector<Ride> displayRequests(@PathVariable("username") String username ){
@@ -23,7 +32,7 @@ public class DriverURLS {
     }
 
     @GetMapping("driver/{username}/currentRide")
-    public String displayCurrntRide(@PathVariable("username") String username){
+    public String displayCurrentRide(@PathVariable("username") String username){
         Driver driver = Database.getDriverByUsername(username);
         String currentRide="";
         currentRide=driver.getDriverRide().getSource()+"-------->"+driver.getDriverRide().getDestination()+"\n";
@@ -33,7 +42,7 @@ public class DriverURLS {
     }
 
     @GetMapping("driver/{username}/rating")
-    public String displayrating(@PathVariable("username") String username){
+    public String displayRating(@PathVariable("username") String username){
         Driver driver = Database.getDriverByUsername(username);
         String currentRate="";
         currentRate+= driver.getAllRating()+"\n";

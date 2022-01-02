@@ -38,7 +38,7 @@ public class  Database  {
     public static boolean verify(String user, String pass){
         for (User user1:allUsers) {
             if(user1.getUserName().equals(user)&&user1.getPassword().equals(pass)){
-                System.out.println("You have logged in successfully");
+                user1.setOnline(true);
 
                 return true;
             }
@@ -49,13 +49,14 @@ public class  Database  {
     public static boolean verifyDriver(String user,String pass){
         for(Driver driver:allDrivers){
             if(driver.getUserName().equals(user) && driver.getPassword().equals(pass)){
-                System.out.println("You have logged in successfully");
+                driver.setOnline(true);
 
                 return true;
             }
         }
         return false;
     }
+
 
 
     public static boolean addUser(Customer user){

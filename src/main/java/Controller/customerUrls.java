@@ -1,12 +1,15 @@
 package Controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class customerUrls {
+
+    AuthenticationManager authenticationManager=AuthenticationManager.getAuthenticationManager();
+    @PostMapping(value="user/register",consumes = "application/json",produces = "application/json")
+    public boolean register(@RequestBody Customer customer){
+        return authenticationManager.register(customer);
+    }
 
     @PostMapping("user/{username}/requestRide/{source}/{dest}")
     public void requestRide(@PathVariable("username") String username,@PathVariable("source") String source,@PathVariable("dest") String dest)
