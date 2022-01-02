@@ -132,12 +132,11 @@ public class Ride implements rideSub{
 			return true;
 		}
 	}
-	public void getOffer(int selectOffer){
-		selectedOffer= offers.get(selectOffer-1);
-		offers.get(selectOffer-1).getDriver().setDriverRide(this);
+	public void addSelOffer(Offer offer){
+		selectedOffer= offer;
+		offer.getDriver().setDriverRide(this);
 		Database.getAllRides().remove(this);
-		offers.remove(selectOffer-1);
-
+		offers.remove(offer);
 	}
 
 	Vector<driverAndRideObserver> obsSub;

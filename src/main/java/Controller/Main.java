@@ -80,9 +80,9 @@ public class Main {
                                     }
                                     case 3->{
                                         System.out.println("enter ride number:");
-                                        int ridenumber;
-                                        ridenumber = scannerInt.nextInt();
-                                        customer1.chooseOffer(ridenumber);
+                                        int rideNumber;
+                                        rideNumber = scannerInt.nextInt();
+                                        customer1.chooseOffer(rideNumber);
                                     }
                                     case 4 ->{
                                         System.out.println("Rate your latest driver");
@@ -102,31 +102,36 @@ public class Main {
                         else if (type == 2) {
                             Driver driver1 = Database.getDriver(Username, Password);
                             int choiceD = 0;
-                            while (choiceD != 6) { //not equal the log-out number choice
+                            while (choiceD != 7) { //not equal the log-out number choice
                                 if(!driver1.isActive()){
                                     System.out.println("You are currently suspended");
                                     break;
                                 }
                                 System.out.println("1-Search for a ride");
-                                System.out.println("2-View current ride");
-                                System.out.println("3-View all rating & average rating");
-                                System.out.println("4-Add favourite area");
-                                System.out.println("5-List favourite areas");
-                                System.out.println("6-Logout");
+                                System.out.println("2-Set offer for a ride");
+                                System.out.println("3-View current ride");
+                                System.out.println("4-View all rating & average rating");
+                                System.out.println("5-Add favourite area");
+                                System.out.println("6-List favourite areas");
+                                System.out.println("7-Logout");
                                 choiceD = scannerInt.nextInt();
                                 switch(choiceD) {
                             		case 1 -> {
                             			if (driver1.listRidesWithSourceArea()) {
                             				driver1.displayDriverRides();
-                            				System.out.println("Set the offer");
-                            				double price=scannerDoub.nextDouble();
-                            				//driver1.setOffer(driver1.chooseRide(),price);
                             			}
                             			else
                             				System.out.println("There is no requests in your fav areas");
-
                             		}
-                            		case 2 -> {
+                                    case 2 ->{
+                                        System.out.println("Enter ride number and ride price");
+                                        int ch;
+                                        double price;
+                                        ch = scannerInt.nextInt();
+                                        price = scannerInt.nextInt();
+                                        driver1.chooseRide(ch,price);
+                                    }
+                            		case 3 -> {
                             			try {
                             			System.out.println(driver1.getDriverRide().getSource()+"-------->"+driver1.getDriverRide().getDestination());
                             			System.out.println(driver1.getDriverRide().getCustomer().getUserName());
@@ -137,17 +142,17 @@ public class Main {
                             				System.out.println("Error");
                             			}
                             		}
-                            		case 3 -> {
+                            		case 4 -> {
                                         System.out.println(driver1.getAllRating());
                             			System.out.println(" ");
                                         System.out.println(driver1.getAverageRating());
                             		}
-                            		case 4 -> {
+                            		case 5 -> {
                             			System.out.println("Enter the area you want to add");
                             			String area = scannerStr.nextLine();
                             			driver1.setFavouriteArea(area);
                             		}
-                            		case 5 -> {
+                            		case 6 -> {
                                         System.out.println(driver1.getFavouriteArea());
                             		}
 

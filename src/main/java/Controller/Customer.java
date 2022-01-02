@@ -1,6 +1,6 @@
 package Controller;
 
-import java.util.Scanner;
+import java.util.Vector;
 
 public class Customer extends User {
 
@@ -13,29 +13,26 @@ public class Customer extends User {
 		myRide=r;// added this to see his ride
 
     }
-
+	Vector<Offer>customOffers = null;
 	public String displayOffers(){
 		String Offers="";
-
 		for (int i = 0; i < myRide.getOffers().size(); i++) {
 			Offers+=i+1+"-"+myRide.getOffers().get(i);
+			customOffers.add(myRide.getOffers().get(i));
 		}
 		return Offers;
 	}
     // parameter to choose offer
     public boolean chooseOffer(int choice){
-
 		if(myRide==null)
 		{
 			return false;
 		}
-
-		if(myRide.listOffers()) {
-
+		if(customOffers!=null) {
 			if (choice == 0) {
 				return false;
 			}
-			myRide.getOffer(choice);
+			myRide.setSelectedOffer(customOffers.get(choice));
 			myRide.log("Customer accepted offer",this);
 		}
 		return true;

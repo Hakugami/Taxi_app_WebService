@@ -27,6 +27,33 @@ public class customerUrls {
             return false;
         }
     }
+    @GetMapping("user/{username}/displayOffers")
+    public String displayOffers(@PathVariable("username") String username)
+    {
+        Customer customer1 = Database.getUserByUsername(username);
+        return customer1.displayOffers();
+    }
+
+    @PostMapping("user/{username}/chooseOffer/{ridenumber}")
+    public void  chooseOffer(@PathVariable("username")String username, @PathVariable("ridenumber") int ridenumber)
+    {
+        Customer customer1 = Database.getUserByUsername(username);
+        customer1.chooseOffer(ridenumber);
+    }
+
+    @PostMapping("user/{username}/rateRide/{rate}")
+    public boolean rateRide(@PathVariable("username")String username,@PathVariable("rate") double rate)
+    {
+        Customer customer1 = Database.getUserByUsername(username);
+        try{
+            customer1.addRate(rate);
+            return true;
+        }
+        catch (Exception e){
+            return false;
+        }
+    }
+
 
 }
 
