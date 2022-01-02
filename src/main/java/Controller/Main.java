@@ -10,7 +10,7 @@ public class Main {
             System.out.println("\nWelcome to our taxi app\n---------------------------\n");
             Driver driver = new Driver();
             Customer customer = new Customer();
-            Admin admin =new Admin();
+            Admin admin =Admin.getAdmin();
             Scanner scannerInt = new Scanner(System.in);
             Scanner scannerStr = new Scanner(System.in);
             Scanner scannerDoub = new Scanner(System.in);

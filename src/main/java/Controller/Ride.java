@@ -27,7 +27,6 @@ public class Ride implements rideSub{
 			stringBuilder.append(dtf.format(now)).append("--->"+event+": ").append(customer.getUserName());
 			Database.saveLogs(stringBuilder.toString());
 			log("Driver has reached the user location");
-			log("Driver has reached his destination");
 		}
 
 	}
@@ -40,6 +39,12 @@ public class Ride implements rideSub{
 				.append(" "+customer.getUserName());
 
 		Database.saveLogs(stringBuilder.toString());
+	}
+
+	public void endRide(){
+		selectedOffer.getDriver().setCurrentLocation(destination);
+		log("Driver has reached his destination");
+		selectedOffer.getDriver().setBusy(false);
 	}
 
 	public double getDiscount() {

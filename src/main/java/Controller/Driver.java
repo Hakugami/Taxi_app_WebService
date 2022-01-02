@@ -136,23 +136,23 @@ public class Driver extends User implements driverAndRideObserver{
 	}
 
 	public String getFavouriteArea() {
-		String Result="";
+		StringBuilder Result= new StringBuilder();
 		for (String favArea: favouriteArea) {
-			Result+=favArea+"\n";
+			Result.append(favArea).append("\n");
 		}
-		return  Result;
+		return Result.toString();
 	}
 	public void setAllRating(String username,double rate) {
 		Rate r=new Rate(username,rate);
 		allRating.add(r);
 	}
 	public String getAllRating() {
-		String allRateing="";
-		for(Rate allRate : allRating)
+		String allRating="";
+		for(Rate allRate : this.allRating)
 		{
-			allRateing +=allRate.getUsername()+"   "+allRate.getRate();
+			allRating +=allRate.getUsername()+"   "+allRate.getRate();
 		}
-		return allRateing;
+		return allRating;
 	}
 	public String getAverageRating() {
 		double r=0;

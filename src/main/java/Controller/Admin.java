@@ -9,13 +9,22 @@ public class Admin extends Person {
     public static ArrayList<Driver> allRequests=new ArrayList<>();
     private static final ArrayList<String> logs=new ArrayList<>();
 
+    private static Admin admin= new Admin();
+    private Admin(){}
+
+    public static Admin getAdmin() {
+        return admin;
+    }
+
     public static void storeLogs(String log){
         logs.add(log);
     }
-    public void showLogs(){
+    public String showLogs(){
+        StringBuilder stringBuilder=new StringBuilder();
         for(String string:logs){
-            System.out.println(string);
+            stringBuilder.append(string).append("\n");
         }
+        return stringBuilder.toString();
     }
 
     public  boolean setDiscounts(String area,Double value){
@@ -30,6 +39,7 @@ public class Admin extends Person {
         }
         return false;
     }
+
 
 
 

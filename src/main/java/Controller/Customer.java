@@ -15,12 +15,12 @@ public class Customer extends User {
     }
 	Vector<Offer>customOffers = null;
 	public String displayOffers(){
-		String Offers="";
+		StringBuilder Offers= new StringBuilder();
 		for (int i = 0; i < myRide.getOffers().size(); i++) {
-			Offers+=i+1+"-"+myRide.getOffers().get(i);
+			Offers.append(i).append(1).append("-").append(myRide.getOffers().get(i));
 			customOffers.add(myRide.getOffers().get(i));
 		}
-		return Offers;
+		return Offers.toString();
 	}
     // parameter to choose offer
     public boolean chooseOffer(int choice){

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class AdminURLS {
-    Admin admin=new Admin();
+    Admin admin=Admin.getAdmin();
     @GetMapping("admin/requests")
     public String displayRequests(){
         return admin.displayRequests();
@@ -26,5 +26,10 @@ public class AdminURLS {
     public boolean suspendCustomer(@PathVariable String userName){
         return admin.suspendCustomer(userName);
     }
+    @GetMapping("admin/logs")
+    public String getLogs(){
+        return admin.showLogs();
+    }
+
 
 }
