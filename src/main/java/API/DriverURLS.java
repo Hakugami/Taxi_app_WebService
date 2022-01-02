@@ -38,7 +38,6 @@ public class DriverURLS {
     public void chooseRide(@PathVariable("username") String username ,@PathVariable("numOfRide") int numOfRide,@PathVariable("price") double price){
         Driver driver = Database.getDriverByUsername(username);
         driver.chooseRide(numOfRide,price);
-        return;
     }
 
     @GetMapping("driver/{username}/currentRide")
@@ -55,6 +54,7 @@ public class DriverURLS {
     public String displayRating(@PathVariable("username") String username){
         Driver driver = Database.getDriverByUsername(username);
         String currentRate="";
+        assert driver != null;
         currentRate+= driver.getAllRating()+"\n";
         currentRate+=driver.getAverageRating();
         return currentRate;
@@ -64,12 +64,14 @@ public class DriverURLS {
     public void setFavoriteArea(@PathVariable("username") String username,@PathVariable("area") String area)
     {
         Driver driver = Database.getDriverByUsername(username);
+        assert driver != null;
         driver.setFavouriteArea(area);
     }
 
     @GetMapping("driver/{username}/getFavouriteArea")
     public String getFavouriteArea(@PathVariable("username") String username){
         Driver driver = Database.getDriverByUsername(username);
+        assert driver != null;
         return driver.getFavouriteArea();
     }
 

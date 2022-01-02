@@ -8,13 +8,37 @@ import java.util.Map;
 
 public class  Database implements IDatabase {
 
+    private static String date = "";
     private static final ArrayList<Customer> allUsers=new ArrayList<>();
     private static final ArrayList<Driver> allDrivers= new ArrayList<>();
     private static final ArrayList<Ride> allRides=new ArrayList<>();
     private static final ArrayList<Driver> driversRequests=new ArrayList<>();
     public static Map<String,Double> areaDiscounts =new HashMap<>();
-
+    private static final ArrayList<String> PublicHoliday=new ArrayList<>();
     private static final Database instance=new Database();//singleton
+
+    public static String getDate() {
+        return date;
+    }
+    public static void setDate(String date1){
+        date=date1;
+    }
+
+    public static void addPublicHoliday(String holiday){
+        PublicHoliday.add(holiday);
+    }
+
+    public static ArrayList<String> getPublicHoliday(){
+        return PublicHoliday;
+    }
+
+    public static Map<String, Double> getAreaDiscounts() {
+        return areaDiscounts;
+    }
+
+    public static void setAreaDiscounts(Map<String, Double> areaDiscounts) {
+        Database.areaDiscounts = areaDiscounts;
+    }
 
     private Database() {}
 

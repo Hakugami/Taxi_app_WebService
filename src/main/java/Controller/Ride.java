@@ -63,11 +63,11 @@ public class Ride implements rideSub {
 	{
 		return !offers.isEmpty();
 	}
-	public Ride(String source, String destination, Customer customer) {
+	public Ride(String source, String destination, Customer customer,int numOfPeople) {
 		this.source = source;
 		this.destination = destination;
 		this.customer = customer;
-		
+		this.numOfPeople=numOfPeople;
 	}
 	public Ride(String source, String destination, Customer customer,Driver driver) {
 		this.source = source;
@@ -173,5 +173,9 @@ public class Ride implements rideSub {
 				}
 			}
 		}
+	}
+
+	public int getNumOfPeople() {
+		return numOfPeople;
 	}
 }

@@ -4,8 +4,11 @@ import View.Database;
 import View.IDatabase;
 
 public abstract class User extends Person {
+    protected String birthDate;
     protected boolean online=false;
     public boolean active=true;
+
+
     IDatabase database=Database.getInstance();
     public User() {
         super();
@@ -23,6 +26,13 @@ public abstract class User extends Person {
 
     }
 
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
+    }
     public void setOnline(boolean online) {
         this.online = online;
     }

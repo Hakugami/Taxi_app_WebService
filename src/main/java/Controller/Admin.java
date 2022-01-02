@@ -12,7 +12,7 @@ public class Admin extends Person {
     public static ArrayList<Driver> allRequests=new ArrayList<>();
     private static final ArrayList<String> logs=new ArrayList<>();
     IDatabase database = Database.getInstance();
-    private static Admin admin= new Admin();
+    private static final Admin admin= new Admin();
     private Admin(){}
 
     public static Admin getAdmin() {
@@ -41,6 +41,10 @@ public class Admin extends Person {
             }
         }
         return false;
+    }
+
+    public void setHolidays(String holidays){
+        Database.addPublicHoliday(holidays);
     }
 
 

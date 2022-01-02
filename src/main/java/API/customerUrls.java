@@ -22,11 +22,12 @@ public class customerUrls {
         return authenticationManager.logout();
     }
 
-    @PostMapping("user/{username}/requestRide/{source}/{dest}")
-    public void requestRide(@PathVariable("username") String username,@PathVariable("source") String source,@PathVariable("dest") String dest)
+    @PostMapping("user/{username}/requestRide/{source}/{dest}/{num}")
+    public void requestRide(@PathVariable("username") String username,@PathVariable("source") String source,@PathVariable("dest") String dest,@PathVariable("num") int num)
     {
         Customer customer1= Database.getUserByUsername(username);
-        customer1.requestRide(source, dest);
+        assert customer1 != null;
+        customer1.requestRide(source, dest,num);
     }
 
     @PostMapping("user/{username}/addRate/{rate}")

@@ -4,15 +4,44 @@ import View.Database;
 import View.Offer;
 import View.Rate;
 
+import javax.xml.crypto.Data;
 import java.util.Vector;
 
 public class Customer extends User {
 
 	protected Ride myRide;
+	protected boolean firstRide=true;
 
-    
-    public void requestRide (String source,String destination){
-		Ride r=new Ride(source,destination,this);//leave this, remove the rest
+	public void discount(){
+		boolean flag=false;
+		for(String string: Database.getPublicHoliday()){
+			flag=string.equals(Database.getDate());
+
+		}
+		double price=myRide.getSelectedOffer().getPrice();
+		if(this.getBirthDate().equals(Database.getDate())){
+			myRide.getSelectedOffer().setPrice(price - (price * 0.05));
+		}
+		else if(this.firstRide){
+			myRide.getSelectedOffer().setPrice(price - (price * 0.1));
+		}
+		else if(myRide.getNumOfPeople()>1){
+			myRide.getSelectedOffer().setPrice(price - (price * 0.05));
+		}
+		else if(flag){
+			myRide.getSelectedOffer().setPrice(price - (price * 0.05));
+		}
+		else if(Database.getAreaDiscounts().size()>0){
+			for(String string : Database.getAreaDiscounts().keySet()){
+				if(string.equals(myRide.getDestination())){
+					myRide.getSelectedOffer().setPrice(price - (price * 0.1));
+				}
+			}
+		}
+	}
+
+    public void requestRide (String source,String destination,int numOfppl){
+		Ride r=new Ride(source,destination,this,numOfppl);//leave this, remove the rest
 		Database.getAllRides().add(r);//this too
 		myRide=r;// added this to see his ride
 
@@ -37,6 +66,8 @@ public class Customer extends User {
 				return false;
 			}
 			myRide.setSelectedOffer(customOffers.get(choice));
+			discount();
+			firstRide=false;
 			myRide.log("Customer accepted offer",this);
 		}
 		return true;
