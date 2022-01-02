@@ -1,4 +1,9 @@
-package Controller;
+package Actors;
+
+import Actors.Admin;
+import Actors.Customer;
+import Actors.Driver;
+import Data.Database;
 
 import java.util.Scanner;
 

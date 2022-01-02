@@ -1,4 +1,6 @@
-package Controller;
+package Data;
+
+import Actors.Driver;
 
 public class Offer {
     private Driver driver;
